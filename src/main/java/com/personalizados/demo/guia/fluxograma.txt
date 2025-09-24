@@ -1,0 +1,10 @@
+flowchart TD
+    A[Início: Lista<Produto> com N itens] --> B[Stream: começa a percorrer a lista]
+    B --> C{Item atual do Stream?}
+    C -->|Sim| D[Variável local 'produto' recebe o objeto Produto]
+    D --> E[Acessa atributos com getId(), getNome(), getDescricao(), getPreco()]
+    E --> F[Cria ProdutoResponseDTO com esses dados]
+    F --> G{Há próximo item?}
+    G -->|Sim| C
+    G -->|Não| H[Converte Stream em List<ProdutoResponseDTO>]
+    H --> I[Fim: Retorna a lista de DTOs]

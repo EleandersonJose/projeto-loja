@@ -1,0 +1,24 @@
+Lista<Produto> original:
+[ Produto1, Produto2, Produto3, Produto4 ]
+
+Stream começa a processar:
+
+-> Pega Produto1 (objeto com vários atributos)
+   |--> Acessa: produto1.getId(), getNome(), getDescricao(), getPreco()
+   |--> Cria ProdutoResponseDTO1 com esses dados
+
+-> Pega Produto2
+   |--> Acessa atributos do Produto2
+   |--> Cria ProdutoResponseDTO2
+
+-> Pega Produto3
+   |--> Acessa atributos do Produto3
+   |--> Cria ProdutoResponseDTO3
+
+-> Pega Produto4
+   |--> Acessa atributos do Produto4
+   |--> Cria ProdutoResponseDTO4
+
+Resultado final:
+Lista<ProdutoResponseDTO>:
+[ ProdutoResponseDTO1, ProdutoResponseDTO2, ProdutoResponseDTO3, ProdutoResponseDTO4 ]
