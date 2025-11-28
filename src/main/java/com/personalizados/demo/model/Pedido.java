@@ -36,12 +36,15 @@ public class Pedido {
     // 🔥 Conversão para DTO
     public PedidoResponseDTO toResponseDTO() {
         return new PedidoResponseDTO(
-                this.id,
-                cliente.toResponseDTO(),
-                dataPedido,
-                itens.stream().map(ItemPedido::getId).toList(),
-                status,
-                total
+            this.id,
+            this.cliente != null ? this.cliente.toResponseDTO() : null,
+            this.dataPedido,
+            this.itens != null ? this.itens.stream()
+                                    .map(ItemPedido::toResponseDTO)
+                                    .toList()
+                                    : List.of(),
+            this.status,
+            this.total
         );
     }
 }

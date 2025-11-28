@@ -25,10 +25,12 @@ public class PedidoService {
     private ProdutoRepository produtoRepository;
 
     @Transactional
-    public Pedido criarPedido(PedidoRequestDTO dto) {
+    public PedidoResponseDTO criarPedido(PedidoRequestDTO dto) {
+        //Busca cliente e lanca excecao caso de erro
         Cliente cliente = clienteRepository.findById(dto.getClienteId())
                 .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-
+        
+        //monta a lista de produtos
         List<ItemPedido> itens = dto.getItens().stream().map(itemDto -> {
             Produto produto = produtoRepository.findById(itemDto.getProdutoId())
                     .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
@@ -54,8 +56,10 @@ public class PedidoService {
                 .status(dto.getStatus() != null ? dto.getStatus() : StatusPedido.AGUARDANDO)
                 .total(total)
                 .build();
+        
+        Pedido pedidoSalvo = pedidoRepository.save(pedido);
 
-        return pedidoRepository.save(pedido);
+        return pedidoSalvo.toResponseDTO();
     }
 
     public List<PedidoResponseDTO> listar() {

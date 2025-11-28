@@ -40,7 +40,7 @@ class ProdutoServiceTest {
     // Teste 1: salvar produto
     @Test
     void deveSalvarProduto() throws IOException {
-        // TODO: preencher com Arrange, Act e Assert
+        //preencher com Arrange, Act e Assert
         ProdutoRequestDTO request = new ProdutoRequestDTO();
         request.setNome("Caneca");
         request.setDescricao("Naruto");
@@ -71,7 +71,7 @@ class ProdutoServiceTest {
     // Teste 2: listar produtos
     @Test
     void deveListarProdutos() {
-        // TODO: preencher com Arrange, Act e Assert
+        //preencher com Arrange, Act e Assert
 
         // Arrange
         Produto produto1 = Produto.builder()
@@ -104,7 +104,7 @@ class ProdutoServiceTest {
     // Teste 3: atualizar produto
     @Test
     void deveAtualizarProduto() throws IOException {
-        // TODO: preencher com Arrange, Act e Assert
+        //preencher com Arrange, Act e Assert
 
         // Arrange
         Long id = 1L;
@@ -146,7 +146,7 @@ class ProdutoServiceTest {
     // Teste 4: deletar produto
     @Test
     void deveDeletarProduto() {
-        // TODO: preencher com Arrange, Act e Assert
+        //preencher com Arrange, Act e Assert
 
         // Arrange
         Produto produto = new Produto();
@@ -170,7 +170,7 @@ class ProdutoServiceTest {
     // ===============================
     @Test
     void deveLancarExcecaoAoAtualizarProdutoInexistente() {
-        // TODO: preencher com Arrange, Act e Assert
+        //preencher com Arrange, Act e Assert
         ProdutoRequestDTO dto = new ProdutoRequestDTO();
         dto.setNome("Novo Nome");
 

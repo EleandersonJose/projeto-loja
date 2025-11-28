@@ -2,7 +2,6 @@ package com.personalizados.demo.controller;
 
 import com.personalizados.demo.dto.ClienteRequestDTO;
 import com.personalizados.demo.dto.ClienteResponseDTO;
-import com.personalizados.demo.model.Cliente;
 import com.personalizados.demo.service.ClienteService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,32 +20,30 @@ public class ClienteController {
 
     @PostMapping
     public ResponseEntity<ClienteResponseDTO> salvar(@RequestBody @Valid ClienteRequestDTO dto) {
-        Cliente cliente = service.salvar(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(cliente.toResponseDTO());
+        ClienteResponseDTO clienteSalvo = service.salvar(dto);
+        return ResponseEntity.status(HttpStatus.CREATED)
+                             .body(clienteSalvo);
     }
 
     @GetMapping
     public ResponseEntity<List<ClienteResponseDTO>> listar() {
         List<ClienteResponseDTO> clientes = service.listar();
-        return clientes.isEmpty()
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.ok(clientes);
+        return ResponseEntity.ok()
+                            .body(clientes);
     }
 
     @GetMapping("/buscar")
     public ResponseEntity<List<ClienteResponseDTO>> buscarPorNome(@RequestParam String nome) {
         List<ClienteResponseDTO> clientes = service.buscarPorNome(nome);
-        return clientes.isEmpty()
-                ? ResponseEntity.noContent().build()
-                : ResponseEntity.ok(clientes);
+        return ResponseEntity.ok(clientes);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<ClienteResponseDTO> alterar(
             @PathVariable Long id,
             @RequestBody @Valid ClienteRequestDTO dto) {
-        Cliente cliente = service.alterar(id, dto);
-        return ResponseEntity.ok(cliente.toResponseDTO());
+        ClienteResponseDTO clienteAtualizado = service.alterar(id, dto);
+        return ResponseEntity.ok(clienteAtualizado);
     }
 
     @DeleteMapping("/{id}")

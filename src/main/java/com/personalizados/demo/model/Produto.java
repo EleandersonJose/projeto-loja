@@ -24,16 +24,23 @@ public class Produto {
     // Agora o campo armazena apenas o nome da imagem, tipo "caneca123.png"
     private String nomeArquivoImagem;
 
-    public ProdutoResponseDTO toResponseDTO() {
-        String url = "http://localhost:60999/api/produtos/imagens/" + this.nomeArquivoImagem;
 
-        return ProdutoResponseDTO.builder()
-                .id(this.id)
-                .nome(this.nome)
-                .descricao(this.descricao)
-                .preco(this.preco)
-                .nomeArquivoImagem(this.nomeArquivoImagem)
-                .imagemUrl(url)
-                .build();
+
+    public ProdutoResponseDTO toResponseDTO() {
+        String urlBase = "http://localhost:60999/api/produtos/imagens/";
+
+        //Evita erro caso a imagem seja nula
+        String urlCompleta = (this.nomeArquivoImagem != null && !this.nomeArquivoImagem.isBlank())
+                                                    ? urlBase + this.nomeArquivoImagem 
+                                                    : null;
+
+        return new ProdutoResponseDTO(
+                this.id,
+                this.nome,
+                this.descricao,
+                this.preco,
+                this.nomeArquivoImagem,
+                urlCompleta
+        );
     }
 }

@@ -42,6 +42,7 @@ public class ProdutoService {
                 .toList();
     }
 
+    @SuppressWarnings("null")
     public ProdutoResponseDTO alterar(Long id, ProdutoRequestDTO dto) throws IOException {
         // Busca o produto existente
         Produto produto = repository.findById(id)

@@ -1,33 +1,24 @@
-package com.personalizados.demo.model;
+package com.personalizados.demo.dto;
 
-import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
-import com.personalizados.demo.dto.ItemPedidoResponseDTO;
-
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class ItemPedido {
+public class ItemPedidoResponseDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
-    private Produto produto;
-
+    private Long produtoId;
+    private String nomeProduto;
     private Integer quantidade;
-
     private BigDecimal precoUnitario;
-
     private BigDecimal subtotal;
 
-    public ItemPedidoResponseDTO toResponseDTO(){
+    public ItemPedidoResponseDTO toResponseDTO() {
         return new ItemPedidoResponseDTO(
             this.id,
             this.produto != null ? this.produto.getId() : null,
@@ -37,4 +28,5 @@ public class ItemPedido {
             this.subtotal
         );
     }
+
 }
