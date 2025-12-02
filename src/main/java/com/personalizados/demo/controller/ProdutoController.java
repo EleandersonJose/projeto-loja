@@ -22,10 +22,17 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<ProdutoResponseDTO> salvar(
             @Valid @ModelAttribute ProdutoRequestDTO dto) throws IOException {
+<<<<<<< HEAD
         //Produto produto = service.salvar(dto);
         ProdutoResponseDTO produtoSalvo = service.salvar(dto);
         return ResponseEntity.status(HttpStatus.CREATED)
                              .body(produtoSalvo);
+=======
+
+        ProdutoResponseDTO produtoSalvo = service.salvar(dto);
+
+        return ResponseEntity.status(HttpStatus.CREATED).body(produtoSalvo);
+>>>>>>> 1a27b37 (Removendo pasta duplicada projeto-loja)
     }
 
     @GetMapping
@@ -40,6 +47,10 @@ public class ProdutoController {
             @PathVariable Long id,
             @Valid @ModelAttribute ProdutoRequestDTO dto) throws IOException {
         ProdutoResponseDTO produtoAtualizado = service.alterar(id, dto);
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1a27b37 (Removendo pasta duplicada projeto-loja)
         return ResponseEntity.ok(produtoAtualizado);
     }
 

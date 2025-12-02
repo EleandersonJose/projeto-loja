@@ -24,6 +24,7 @@ public class Produto {
     // Agora o campo armazena apenas o nome da imagem, tipo "caneca123.png"
     private String nomeArquivoImagem;
 
+<<<<<<< HEAD
 
 
     public ProdutoResponseDTO toResponseDTO() {
@@ -33,6 +34,14 @@ public class Produto {
         String urlCompleta = (this.nomeArquivoImagem != null && !this.nomeArquivoImagem.isBlank())
                                                     ? urlBase + this.nomeArquivoImagem 
                                                     : null;
+=======
+    public ProdutoResponseDTO toResponseDTO() {
+        String urlBase = "http://localhost:64999/api/produtos/imagens/";
+
+        String urlCompleta = (this.nomeArquivoImagem != null && !this.nomeArquivoImagem.isBlank())
+                ? urlBase + this.nomeArquivoImagem
+                : null;
+>>>>>>> 1a27b37 (Removendo pasta duplicada projeto-loja)
 
         return new ProdutoResponseDTO(
                 this.id,
@@ -40,7 +49,11 @@ public class Produto {
                 this.descricao,
                 this.preco,
                 this.nomeArquivoImagem,
+<<<<<<< HEAD
                 urlCompleta
         );
+=======
+                urlCompleta);
+>>>>>>> 1a27b37 (Removendo pasta duplicada projeto-loja)
     }
 }
